@@ -17,6 +17,9 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults())
+                .oauth2Login((oauth2 -> oauth2
+                        .defaultSuccessUrl("/user/logged", true)
+                ))
                 .authorizeHttpRequests(authorizeRequests -> {
                     authorizeRequests.anyRequest().authenticated();
                 })
