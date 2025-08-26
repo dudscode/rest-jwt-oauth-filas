@@ -1,53 +1,71 @@
 package com.roadmap.fase1.model;
 
 import jakarta.persistence.*;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+
 
 @Entity
-@Table(name = "app_user")
-public class User {
+@Table(name = "tb_users")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class User  implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(length = 36)
+    private String identifier;
 
     private String name;
     @Column(nullable = false)
+    @ToString.Exclude
     private String password;
     @Column(nullable = false)
     private String email;
     private String phone;
 
-    public User() {}
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "tb_users_roles",
+            joinColumns = @JoinColumn(name = "user_identifier"),
+            inverseJoinColumns = @JoinColumn(name = "role_identifier"))
+    @ToString.Exclude
+    private Collection<Roles> roles;
 
-    public String getName() {
-        return name;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public String getUsername() {
+        return this.email;
     }
-
+    @Override
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public String getEmail() {
-        return email;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    public String getPhone() {
-        return phone;
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 }
