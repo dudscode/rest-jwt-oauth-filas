@@ -6,10 +6,6 @@ import com.roadmap.fase1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
-import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,16 +22,4 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.FOUND).body(userService.getUsers());
     }
 
-//    @GetMapping("/logged")
-//    public Object userInfo(
-//            @AuthenticationPrincipal OAuth2User principal,
-//            @RegisteredOAuth2AuthorizedClient("github") OAuth2AuthorizedClient authorizedClient) {
-//
-//        String accessToken = authorizedClient.getAccessToken().getTokenValue();
-//
-//        return new Object() {
-//            public final Object user = principal.getAttributes();
-//            public final String token = accessToken;
-//        };
-//    }
 }
