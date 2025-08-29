@@ -31,9 +31,6 @@ public class SecurityConfiguration {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//                .oauth2Login((oauth2 -> oauth2
-//                        .defaultSuccessUrl("/user/logged", true)
-//                ))
                 .authorizeHttpRequests(authorizeRequests -> {
                     authorizeRequests.requestMatchers(HttpMethod.POST,WHITELIST).permitAll();
                     authorizeRequests.requestMatchers(HttpMethod.GET,"/user/all").hasAnyRole("ADMIN");
