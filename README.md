@@ -20,14 +20,14 @@ API REST desenvolvida em Spring Boot que implementa um sistema completo de auten
 
 ## ⚙️ Funcionalidades
 
-- ✅ Registro de usuários
-- ✅ Autenticação com JWT
-- ✅ Autorização baseada em roles (USER/ADMIN)
-- ✅ Envio de emails assíncrono com filas
-- ✅ Processamento em background com BlockingQueue
-- ✅ Integração com Mailtrap para desenvolvimento
-- ✅ Documentação automática da API (Swagger)
-- ✅ Console H2 para desenvolvimento
+- Registro de usuários
+- Autenticação com JWT
+- Autorização baseada em roles (USER/ADMIN)
+- Envio de emails assíncrono com filas
+- Processamento em background com BlockingQueue
+- Integração com Mailtrap para desenvolvimento
+- Documentação automática da API (Swagger)
+- Console H2 para desenvolvimento
 
 ## 📁 Estrutura do Projeto
 
@@ -83,8 +83,18 @@ export TOKEN_SECRET=meu_token_super_secreto_jwt_muito_seguro
 2. Acesse sua inbox de desenvolvimento
 3. Copie as credenciais SMTP
 4. Atualize o `application.properties` com suas credenciais
-
-### 5. Execute a aplicação
+```properties
+# MAILTRAP - Configurações SMTP
+spring.mail.host=smtp.mailtrap.io
+spring.mail.port=587
+spring.mail.username=seu_username_mailtrap
+spring.mail.password=sua_senha_mailtrap
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.starttls.required=true
+spring.mail.from=noreply@seuapp.com
+```
+### 4. Execute a aplicação
 ```bash
 # Usando Maven
 ./mvnw spring-boot:run
@@ -94,7 +104,7 @@ export TOKEN_SECRET=meu_token_super_secreto_jwt_muito_seguro
 java -jar target/fase1-0.0.1-SNAPSHOT.jar
 ```
 
-### 6. Acesse a aplicação
+### 5. Acesse a aplicação
 - **API**: http://localhost:8080
 - **Swagger UI**: http://localhost:8080/swagger-ui.html
 - **H2 Console**: http://localhost:8080/h2-console
@@ -117,6 +127,7 @@ java -jar target/fase1-0.0.1-SNAPSHOT.jar
 ## 📄 Documentação da API (Swagger)
 
 A documentação completa da API está disponível através do Swagger UI:
+<img width="1225" height="897" alt="image" src="https://github.com/user-attachments/assets/21027259-0380-44df-ae1d-d7dde55dc1d5" />
 
 
 ## 🔐 Autenticação e Autorização
@@ -181,31 +192,6 @@ A aplicação implementa um sistema assíncrono de envio de emails utilizando **
 - **Confiabilidade**: Emails são processados mesmo se houver falhas temporárias
 - **Escalabilidade**: Fila gerencia múltiplos usuários simultaneamente
 - **Separação de Responsabilidades**: Registro e envio de email são processos independentes
-
-### 📮 Configuração do Mailtrap
-
-O **Mailtrap** é uma ferramenta para testar emails em desenvolvimento sem enviar emails reais.
-
-#### 🚀 Setup do Mailtrap
-
-1. **Crie uma conta gratuita**: [Mailtrap.io](https://mailtrap.io)
-2. **Acesse Email Testing**: No dashboard, vá para "Email Testing"
-3. **Crie uma Inbox**: Clique em "Add Inbox" 
-4. **Copie as credenciais SMTP**: Na aba "SMTP Settings"
-
-#### ⚙️ Configuração no application.properties
-
-```properties
-# MAILTRAP - Configurações SMTP
-spring.mail.host=smtp.mailtrap.io
-spring.mail.port=587
-spring.mail.username=seu_username_mailtrap
-spring.mail.password=sua_senha_mailtrap
-spring.mail.properties.mail.smtp.auth=true
-spring.mail.properties.mail.smtp.starttls.enable=true
-spring.mail.properties.mail.smtp.starttls.required=true
-spring.mail.from=noreply@seuapp.com
-```
 
 ## 🗄️ Banco de Dados
 
