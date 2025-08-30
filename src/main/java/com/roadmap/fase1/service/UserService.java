@@ -26,11 +26,15 @@ public class UserService {
     @Autowired
     private TokenService tokenService;
 
-    public User saveUser(RegisterDTO user) {
+    @Autowired
+    private UserProcessingService userProcessingService;
+
+    public User saveUser(RegisterDTO user) throws InterruptedException {
         UserDetails userExists = userRepository.findByEmail(user.email());
         if (userExists != null) { return null; }
         String passwordEncrypted = new BCryptPasswordEncoder().encode(user.password());
         User newUser = new User(user.name(),passwordEncrypted, user.email(), user.phone(), user.role());
+        userProcessingService.enqueueUser(newUser);
         return userRepository.save(newUser);
     }
     public String authenticate(AuthenticationDTO user) {

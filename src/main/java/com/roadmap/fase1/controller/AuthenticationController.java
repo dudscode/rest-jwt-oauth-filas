@@ -31,7 +31,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity register (@RequestBody  @Valid RegisterDTO data){
+    public ResponseEntity register (@RequestBody  @Valid RegisterDTO data) throws InterruptedException {
         User newUser = userService.saveUser(data);
         if (newUser == null) { return  ResponseEntity.status(HttpStatus.CONFLICT).body("Email já registrado!");}
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
