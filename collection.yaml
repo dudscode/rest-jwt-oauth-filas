@@ -1,0 +1,142 @@
+type: collection.insomnia.rest/5.0
+name: Fases
+meta:
+  id: wrk_3c24ebd3c8584207aad7508b20896230
+  created: 1755223654275
+  modified: 1755223654275
+  description: ""
+collection:
+  - name: Fase 1
+    meta:
+      id: fld_4a98d75dccd243eb905e625acb325955
+      created: 1755223669075
+      modified: 1755223669075
+      sortKey: -1755223669075
+      description: ""
+    children:
+      - url: http://localhost:8080/user/all
+        name: All user
+        meta:
+          id: req_b18635edff4d4991ab5c0ed11f53660f
+          created: 1755228412607
+          modified: 1756593991619
+          isPrivate: false
+          description: ""
+          sortKey: -1755228412607
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.4.0
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJyZXN0LWp3dC1vYXV0aC1maWxhcyIsInN1YiI6Im5hdGg1QGV4YW1wbGUuY29tIiwiZXhwIjoxNzYwMTkzOTgzfQ.pHQMe6LaOUiyaCrKhSgu9leoB3Keje0GjgI1TE39mbU
+          prefix: ""
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/auth/register
+        name: Register
+        meta:
+          id: req_d38ce1e668884d369755f44d4377aaca
+          created: 1755228599632
+          modified: 1756593967899
+          isPrivate: false
+          description: ""
+          sortKey: -1755228412707
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Nathalia 5",
+            	"password": "SenhaSegura123!",
+            	"email": "nath5@example.com",
+            	"phone": "+5511999999999",
+            	"role": "ADMIN"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.4.0
+        authentication:
+          type: none
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/auth/login
+        name: Login
+        meta:
+          id: req_a39c6129b1b743528c0cbf0fdfe932ce
+          created: 1755474431464
+          modified: 1756593981713
+          isPrivate: false
+          description: ""
+          sortKey: -1755228412657
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "password": "SenhaSegura123!",
+              "email": "nath5@example.com"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.4.0
+        authentication:
+          type: none
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_1b101bf2b56679849c66397e16c54ba2390e77e6
+    created: 1755223654277
+    modified: 1756263080384
+  cookies:
+    - key: JSESSIONID
+      value: 9E6F66C9F4DD90107717EAF8A294CF6E
+      domain: localhost
+      path: /
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-08-22T02:30:26.153Z
+      lastAccessed: 2025-08-27T02:51:20.383Z
+      id: cc06ad8c-aabb-4549-80da-22ebe7e967d4
+    - key: _gh_sess
+      value: Bzo4DIJhDEfYW931J3AWEbBL%2FieoJBSSxMPN3gvfKf0nZiaAQjBZl8bKT0MRShUMs3gXdaiJ7KpPTpvUD8GVZFBJSbfQrm%2FoLVbqf%2FeRHc2wMtbotQZn8wv9EIvUIeRmfPvnvDE%2FQMpgSTAaGxEsEvo6cR8UrMQ9QbtI5nI33AKk%2FzPHbS%2F6VLY%2BhjSVnAdOMW1uoiXChx%2B%2B99d%2BMYTSxZ60B2%2F0Tu4hQvWfey9A0dfyPFt8vFztNOHI3jog0hIwuRog7814tnc0HPFmOzVxVA%3D%3D--4qC%2B%2Fq10npXuoiT1--Uk0OEw%2B3ZqrcPMmr1MedAw%3D%3D
+      domain: localhost
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-08-24T02:56:42.567Z
+      lastAccessed: 2025-08-27T02:51:20.383Z
+      sameSite: lax
+      id: a550e536-c09f-4b66-b075-2fafcff3c5fb
+environments:
+  name: Base Environment
+  meta:
+    id: env_1b101bf2b56679849c66397e16c54ba2390e77e6
+    created: 1755223654277
+    modified: 1755223654277
+    isPrivate: false

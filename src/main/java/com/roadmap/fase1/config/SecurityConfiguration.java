@@ -25,6 +25,13 @@ public class SecurityConfiguration {
             "/auth/register",
             "/auth/login"
     };
+    private String[] swaggerWhitelist = {
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
+            "/swagger-ui.html",
+            "/swagger-resources/**",
+            "/webjars/**"
+    };
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -32,6 +39,7 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorizeRequests -> {
+                    authorizeRequests.requestMatchers(swaggerWhitelist).permitAll();
                     authorizeRequests.requestMatchers(HttpMethod.POST,WHITELIST).permitAll();
                     authorizeRequests.requestMatchers(HttpMethod.GET,"/user/all").hasAnyRole("ADMIN");
                     authorizeRequests.anyRequest().authenticated();
