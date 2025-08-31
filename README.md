@@ -69,7 +69,7 @@ export TOKEN_SECRET=seu_token_secreto_jwt_super_seguro
 
 ### 1. Clone o repositório
 ```bash
-git clone <https://github.com/dudscode/rest-jwt-oauth-filas>
+git clone <https://github.com/dudscode/rest-jwt-queue>
 ```
 
 ### 2. Configure as variáveis de ambiente
